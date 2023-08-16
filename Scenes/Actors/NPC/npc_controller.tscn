@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpn78wedv0y0m"]
+
+[ext_resource type="Script" path="res://Scenes/Actors/NPC/npc_controller.gd" id="1_an82h"]
+[ext_resource type="PackedScene" uid="uid://b2t477on1kyg1" path="res://Scenes/Games/Schwimmen/PlayerInformationWidget.tscn" id="2_gs8jb"]
+[ext_resource type="Texture2D" uid="uid://c31ujo30cq7gk" path="res://Assets/Sprites/Cards/Aseprite/Cardbodies/Cardback.png" id="3_4fqdt"]
+[ext_resource type="PackedScene" uid="uid://wygneuta4w6c" path="res://Assets/Scenes/RemoteCaller.tscn" id="3_t1xgx"]
+[ext_resource type="Texture2D" uid="uid://bm6w6n5m4jt8b" path="res://Assets/Sprites/Utility/LoadCog.png" id="4_efwpj"]
+[ext_resource type="Theme" uid="uid://m3tj8dkv47h2" path="res://Assets/Themes/Text/MenuLabel.tres" id="5_sm2b6"]
+
+[node name="NPCController" type="Node2D"]
+script = ExtResource("1_an82h")
+
+[node name="PlayerInformationWidget" parent="." instance=ExtResource("2_gs8jb")]
+
+[node name="CardControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CardBack1" type="TextureRect" parent="CardControl"]
+visible = false
+layout_mode = 0
+offset_left = -131.0
+offset_top = -5.6
+offset_right = 109.0
+offset_bottom = 426.4
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_4fqdt")
+
+[node name="CardBack2" type="TextureRect" parent="CardControl"]
+visible = false
+layout_mode = 0
+offset_left = -42.0
+offset_top = -5.6
+offset_right = 198.0
+offset_bottom = 426.4
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_4fqdt")
+
+[node name="CardBack3" type="TextureRect" parent="CardControl"]
+visible = false
+layout_mode = 0
+offset_left = 47.0
+offset_top = -5.6
+offset_right = 287.0
+offset_bottom = 426.4
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_4fqdt")
+
+[node name="LoadCogSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -37)
+texture = ExtResource("4_efwpj")
+
+[node name="PointLabel" type="Label" parent="."]
+visible = false
+offset_left = -50.0
+offset_top = -53.0
+offset_right = 50.0
+offset_bottom = -21.0
+theme = ExtResource("5_sm2b6")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RemoteCaller" parent="." instance=ExtResource("3_t1xgx")]
+
+[node name="LoadAnimTimer" type="Timer" parent="."]
+
+[connection signal="ready" from="PlayerInformationWidget" to="." method="_on_player_information_widget_ready"]
+[connection signal="timeout" from="LoadAnimTimer" to="." method="_on_load_anim_timer_timeout"]

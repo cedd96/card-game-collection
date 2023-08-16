@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://vibctvtbpbxj"]
+
+[ext_resource type="PackedScene" uid="uid://b7ofkpr1s3cib" path="res://Scenes/Actors/Player/player_ui_texture_button.tscn" id="1_p7sc7"]
+
+[node name="PlayerControls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameButtons" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1100.0
+offset_top = 958.0
+offset_right = 1200.0
+offset_bottom = 1058.0
+
+[node name="PlayerUITextureButtonSchieben" parent="GameButtons" instance=ExtResource("1_p7sc7")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = -70.0
+focus_neighbor_top = NodePath("../PlayerUITextureButtonPassen")
+focus_neighbor_bottom = NodePath("../PlayerUITextureButtonPassen")
+focus_mode = 0
+labelText = "Schieben"
+
+[node name="PlayerUITextureButtonPassen" parent="GameButtons" instance=ExtResource("1_p7sc7")]
+layout_mode = 1
+offset_top = 35.0
+offset_right = 0.0
+offset_bottom = -35.0
+focus_neighbor_top = NodePath("../PlayerUITextureButtonSchieben")
+focus_neighbor_bottom = NodePath("../PlayerUITextureButtonSchieben")
+focus_mode = 0
+labelText = "Passen"
+
+[node name="PlayerUITextureButton" parent="GameButtons" instance=ExtResource("1_p7sc7")]
+layout_mode = 1
+offset_top = 70.0
+offset_right = 0.0
+offset_bottom = 0.0
+focus_neighbor_top = NodePath("../PlayerUITextureButtonPassen")
+focus_neighbor_bottom = NodePath("../PlayerUITextureButtonSchieben")
+focus_mode = 0
+labelText = "Menu"

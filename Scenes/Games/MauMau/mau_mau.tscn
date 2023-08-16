@@ -1,0 +1,145 @@
+[gd_scene load_steps=22 format=3 uid="uid://bw3dvkrdhq3x8"]
+
+[ext_resource type="PackedScene" uid="uid://wygneuta4w6c" path="res://Assets/Scenes/RemoteCaller.tscn" id="1_dgg5b"]
+[ext_resource type="Script" path="res://Scenes/Games/MauMau/mau_mau.gd" id="1_i8hkn"]
+[ext_resource type="FontFile" uid="uid://lkm4jfkde0y4" path="res://Assets/Fonts/joystix/joystix monospace.otf" id="1_oyfyu"]
+[ext_resource type="PackedScene" uid="uid://doycccy5qjbtb" path="res://Scenes/Games/Utility/Kartenstapel/kartenstapel.tscn" id="3_g452n"]
+[ext_resource type="Texture2D" uid="uid://d32wrnl1lnpie" path="res://Assets/Sprites/Cards/Aseprite/40x40_Icons/Heart_40x40.png" id="4_p2i12"]
+[ext_resource type="PackedScene" uid="uid://frabumxfgk8f" path="res://Scenes/Games/Utility/Kartenstapel/Discardpile/discardpile.tscn" id="4_rop6v"]
+[ext_resource type="Texture2D" uid="uid://b4mx5hlp80ps4" path="res://Assets/Sprites/Cards/Aseprite/40x40_Icons/Cross_40x40.png" id="5_h727m"]
+[ext_resource type="Texture2D" uid="uid://bukm8rqhcuybi" path="res://Assets/Sprites/Cards/Aseprite/40x40_Icons/Heart_40x40_pressed.png" id="5_omyad"]
+[ext_resource type="Texture2D" uid="uid://bep3o4nydcqvj" path="res://Assets/Sprites/Cards/Aseprite/40x40_Icons/Heart_40x40_hovered.png" id="6_lrero"]
+[ext_resource type="Texture2D" uid="uid://gb6ipb6be0uc" path="res://Assets/Sprites/Cards/Aseprite/40x40_Icons/Diamond_40x40.png" id="6_rgs8k"]
+[ext_resource type="Texture2D" uid="uid://4tfy2tuamgdq" path="res://Assets/Sprites/Cards/Aseprite/40x40_Icons/Spade_40x40.png" id="7_n4got"]
+[ext_resource type="Texture2D" uid="uid://djspei82unfyf" path="res://Assets/Sprites/Cards/Aseprite/40x40_Icons/Cross_40x40_pressed.png" id="8_vqjm7"]
+[ext_resource type="Texture2D" uid="uid://hd8ltx0e6ysq" path="res://Assets/Sprites/Cards/Aseprite/40x40_Icons/Cross_40x40_hovered.png" id="9_4h2gd"]
+[ext_resource type="Texture2D" uid="uid://cckuc8etmfch" path="res://Assets/Sprites/Cards/Aseprite/40x40_Icons/Diamond_40x40_pressed.png" id="11_yqahf"]
+[ext_resource type="Texture2D" uid="uid://myn6yopkwyad" path="res://Assets/Sprites/Cards/Aseprite/40x40_Icons/Diamond_40x40_hovered.png" id="12_0kohl"]
+[ext_resource type="Texture2D" uid="uid://dlf23kwe44a73" path="res://Assets/Sprites/Cards/Aseprite/40x40_Icons/Spade_40x40_pressed.png" id="12_jfuto"]
+[ext_resource type="Texture2D" uid="uid://bpsftkvwipdj" path="res://Assets/Sprites/Cards/Aseprite/40x40_Icons/Spade_40x40_hovered.png" id="13_8w5yc"]
+[ext_resource type="PackedScene" uid="uid://deoyiqoow3481" path="res://Scenes/Actors/MauMau/Player/player_mau_mau.tscn" id="16_4jfpu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qvbg4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vf5f8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsloi"]
+
+[node name="MauMau" type="Node2D"]
+script = ExtResource("1_i8hkn")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.109804, 0.2, 0.0862745, 1)
+
+[node name="SystemMessage" type="Label" parent="."]
+offset_left = 310.0
+offset_top = 320.0
+offset_right = 1610.0
+offset_bottom = 383.0
+theme_override_fonts/font = ExtResource("1_oyfyu")
+theme_override_font_sizes/font_size = 42
+horizontal_alignment = 1
+
+[node name="Gameobjects" type="Node2D" parent="."]
+
+[node name="CardpileButton" type="Button" parent="Gameobjects"]
+offset_left = 1150.0
+offset_top = 432.0
+offset_right = 1270.0
+offset_bottom = 648.0
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qvbg4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vf5f8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wsloi")
+flat = true
+
+[node name="Cardpile" parent="Gameobjects/CardpileButton" instance=ExtResource("3_g452n")]
+position = Vector2(60, 108)
+
+[node name="Discardpile" parent="Gameobjects" instance=ExtResource("4_rop6v")]
+
+[node name="WishButtonControl" type="Control" parent="Gameobjects"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 660.0
+offset_top = 670.0
+offset_right = 1260.0
+offset_bottom = 770.0
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="TextureButtonHeart" type="TextureButton" parent="Gameobjects/WishButtonControl"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("4_p2i12")
+texture_pressed = ExtResource("5_omyad")
+texture_hover = ExtResource("6_lrero")
+metadata/_edit_lock_ = true
+
+[node name="TextureButtonCross" type="TextureButton" parent="Gameobjects/WishButtonControl"]
+layout_mode = 0
+offset_left = 167.0
+offset_right = 207.0
+offset_bottom = 40.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("5_h727m")
+texture_pressed = ExtResource("8_vqjm7")
+texture_hover = ExtResource("9_4h2gd")
+metadata/_edit_lock_ = true
+
+[node name="TextureButtonDiamond" type="TextureButton" parent="Gameobjects/WishButtonControl"]
+layout_mode = 0
+offset_left = 333.0
+offset_right = 373.0
+offset_bottom = 40.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("6_rgs8k")
+texture_pressed = ExtResource("11_yqahf")
+texture_hover = ExtResource("12_0kohl")
+metadata/_edit_lock_ = true
+
+[node name="TextureButtonSpade" type="TextureButton" parent="Gameobjects/WishButtonControl"]
+layout_mode = 0
+offset_left = 500.0
+offset_right = 540.0
+offset_bottom = 40.0
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("7_n4got")
+texture_pressed = ExtResource("12_jfuto")
+texture_hover = ExtResource("13_8w5yc")
+metadata/_edit_lock_ = true
+
+[node name="Participants" type="Node2D" parent="Gameobjects"]
+
+[node name="PlayerMauMau" parent="Gameobjects/Participants" instance=ExtResource("16_4jfpu")]
+position = Vector2(960, 850)
+
+[node name="RemoteCaller" parent="." instance=ExtResource("1_dgg5b")]
+
+[node name="PausedRemoteCaller" parent="." instance=ExtResource("1_dgg5b")]
+process_mode = 3
+
+[node name="SysMsgRemoteCaller" parent="." instance=ExtResource("1_dgg5b")]
+
+[connection signal="pressed" from="Gameobjects/CardpileButton" to="." method="_on_cardpile_button_pressed"]
+[connection signal="empty_deck" from="Gameobjects/CardpileButton/Cardpile" to="." method="_on_cardpile_empty_deck"]
+[connection signal="recycling_finished" from="Gameobjects/CardpileButton/Cardpile" to="." method="_on_cardpile_recycling_finished"]
+[connection signal="pressed" from="Gameobjects/Discardpile" to="." method="_on_discardpile_pressed"]
+[connection signal="pressed" from="Gameobjects/WishButtonControl/TextureButtonHeart" to="." method="_on_TextureButtonHeart_pressed"]
+[connection signal="pressed" from="Gameobjects/WishButtonControl/TextureButtonCross" to="." method="_onTextureButtonCross_pressed"]
+[connection signal="pressed" from="Gameobjects/WishButtonControl/TextureButtonDiamond" to="." method="_on_TextureButtonDiamond_pressed"]
+[connection signal="pressed" from="Gameobjects/WishButtonControl/TextureButtonSpade" to="." method="_on_TextureButtonSpade_pressed"]
+[connection signal="end_turn" from="Gameobjects/Participants/PlayerMauMau" to="." method="_on_player_mau_mau_end_turn"]
+[connection signal="menu_pressed" from="Gameobjects/Participants/PlayerMauMau" to="." method="_on_player_mau_mau_menu_pressed"]
+[connection signal="no_cards_left" from="Gameobjects/Participants/PlayerMauMau" to="." method="_on_no_cards_left"]

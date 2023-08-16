@@ -1,0 +1,131 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj41opp67tjv2"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/Settings/Graphics/Graphics.gd" id="1_his60"]
+[ext_resource type="Theme" uid="uid://cdq8w13sc7q2k" path="res://Assets/Themes/Text/MenuTitle.tres" id="2_ejpje"]
+[ext_resource type="Theme" uid="uid://m3tj8dkv47h2" path="res://Assets/Themes/Text/MenuLabel.tres" id="3_cci2c"]
+[ext_resource type="Theme" uid="uid://dyvwn86aqeleu" path="res://Assets/Themes/Text/MenuButton.tres" id="3_ghk3v"]
+
+[node name="Graphics" type="CanvasLayer"]
+script = ExtResource("1_his60")
+
+[node name="MenuControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="ColorRect" parent="MenuControl"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.109804, 0.2, 0.0862745, 1)
+
+[node name="MenuTitle" type="Label" parent="MenuControl"]
+layout_mode = 0
+anchor_right = 1.0
+offset_top = 200.0
+offset_bottom = 214.0
+theme = ExtResource("2_ejpje")
+text = "Resolution"
+horizontal_alignment = 1
+
+[node name="ButtonResolution" type="Label" parent="MenuControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -446.0
+offset_top = 540.0
+offset_right = 446.0
+offset_bottom = 603.0
+grow_horizontal = 2
+focus_neighbor_top = NodePath("../ButtonBox/ButtonBack")
+theme = ExtResource("3_cci2c")
+text = "Windowsize:"
+
+[node name="ButtonBox" type="Control" parent="MenuControl"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -540.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="OptionButton" type="OptionButton" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 45.5
+offset_right = 445.5
+offset_bottom = 60.0
+grow_horizontal = 2
+focus_neighbor_top = NodePath("../ButtonBack")
+focus_neighbor_bottom = NodePath("../ButtonWindowmode")
+theme = ExtResource("3_ghk3v")
+disabled = true
+alignment = 1
+
+[node name="Background" type="ColorRect" parent="MenuControl/ButtonBox/OptionButton"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ButtonWindowmode" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -446.0
+offset_top = 80.0
+offset_right = 446.0
+offset_bottom = 140.0
+grow_horizontal = 2
+focus_neighbor_top = NodePath("../OptionButton")
+theme = ExtResource("3_ghk3v")
+text = "Windowmode: Window"
+
+[node name="ButtonBack" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_top = 160.0
+offset_right = 82.0
+offset_bottom = 220.0
+grow_horizontal = 2
+focus_neighbor_top = NodePath("../ButtonWindowmode")
+focus_neighbor_bottom = NodePath("../OptionButton")
+theme = ExtResource("3_ghk3v")
+text = "Back"
+
+[node name="TextAnimationClock" type="Timer" parent="."]
+
+[connection signal="focus_entered" from="MenuControl/ButtonBox/OptionButton" to="." method="_on_option_button_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/OptionButton" to="." method="_on_option_button_focus_exited"]
+[connection signal="item_selected" from="MenuControl/ButtonBox/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/OptionButton" to="." method="_on_option_button_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/OptionButton" to="." method="_on_option_button_mouse_exited"]
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonWindowmode" to="." method="_on_button_windowmode_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonWindowmode" to="." method="_on_button_windowmode_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonWindowmode" to="." method="_on_button_windowmode_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonWindowmode" to="." method="_on_button_windowmode_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonWindowmode" to="." method="_on_button_windowmode_pressed"]
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_button_back_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_button_back_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_button_back_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_button_back_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="timeout" from="TextAnimationClock" to="." method="_on_text_animation_clock_timeout"]

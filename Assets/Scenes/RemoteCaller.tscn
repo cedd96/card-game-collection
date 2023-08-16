@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://wygneuta4w6c"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/RemoteCaller.gd" id="1_mlh7k"]
+
+[node name="RemoteCaller" type="Timer"]
+script = ExtResource("1_mlh7k")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=3 uid="uid://byk52gq4rbq5e"]
+
+[ext_resource type="Script" path="res://Scenes/Actors/MauMau/NPC/npc_controler_mau_mau.gd" id="1_d4eg2"]
+[ext_resource type="Texture2D" uid="uid://c31ujo30cq7gk" path="res://Assets/Sprites/Cards/Aseprite/Cardbodies/Cardback.png" id="2_7ehvk"]
+[ext_resource type="Theme" uid="uid://cafqmpty464he" path="res://Assets/Themes/Text/UserFrameLabel.tres" id="2_xsqfi"]
+[ext_resource type="PackedScene" uid="uid://wygneuta4w6c" path="res://Assets/Scenes/RemoteCaller.tscn" id="3_ncnkt"]
+[ext_resource type="Theme" uid="uid://m3tj8dkv47h2" path="res://Assets/Themes/Text/MenuLabel.tres" id="5_ed0tb"]
+[ext_resource type="Texture2D" uid="uid://bm6w6n5m4jt8b" path="res://Assets/Sprites/Utility/LoadCog.png" id="5_natq3"]
+
+[node name="NPCControlerMauMau" type="Node2D"]
+script = ExtResource("1_d4eg2")
+
+[node name="Cards" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -210.0
+offset_top = -5.6
+offset_right = 210.0
+offset_bottom = 145.4
+grow_horizontal = 2
+
+[node name="CardBack1" type="TextureRect" parent="Cards"]
+visible = false
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 432.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_7ehvk")
+
+[node name="CardBack2" type="TextureRect" parent="Cards"]
+visible = false
+layout_mode = 0
+offset_left = 84.0
+offset_right = 324.0
+offset_bottom = 432.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_7ehvk")
+
+[node name="CardBack3" type="TextureRect" parent="Cards"]
+visible = false
+layout_mode = 0
+offset_left = 168.0
+offset_right = 408.0
+offset_bottom = 432.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_7ehvk")
+
+[node name="CardBack4" type="TextureRect" parent="Cards"]
+visible = false
+layout_mode = 0
+offset_left = 252.0
+offset_right = 492.0
+offset_bottom = 432.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_7ehvk")
+
+[node name="CardBack5" type="TextureRect" parent="Cards"]
+visible = false
+layout_mode = 0
+offset_left = 336.0
+offset_right = 576.0
+offset_bottom = 432.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_7ehvk")
+
+[node name="CharacterName" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.0
+offset_top = 170.0
+offset_right = 106.0
+offset_bottom = 193.0
+grow_horizontal = 2
+theme = ExtResource("2_xsqfi")
+text = "Samplename"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardCountLabel" type="Label" parent="."]
+visible = false
+offset_top = 32.0
+offset_right = 82.0
+offset_bottom = 95.0
+theme = ExtResource("5_ed0tb")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadCogSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -37)
+texture = ExtResource("5_natq3")
+
+[node name="RemoteCaller" parent="." instance=ExtResource("3_ncnkt")]
+
+[node name="LoadAnimTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="LoadAnimTimer" to="." method="_on_load_anim_timer_timeout"]

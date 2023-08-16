@@ -1,0 +1,110 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfqg573jhxy61"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/GameOver/game_over_menu.gd" id="1_xkyc2"]
+[ext_resource type="Theme" uid="uid://cdq8w13sc7q2k" path="res://Assets/Themes/Text/MenuTitle.tres" id="2_n2bhl"]
+[ext_resource type="Theme" uid="uid://dyvwn86aqeleu" path="res://Assets/Themes/Text/MenuButton.tres" id="3_beshc"]
+
+[node name="GameOverMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_xkyc2")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.54902)
+metadata/_edit_lock_ = true
+
+[node name="MenuControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="MenuTitle" type="Label" parent="MenuControl"]
+layout_mode = 0
+offset_top = 200.0
+offset_right = 1920.0
+offset_bottom = 395.0
+theme = ExtResource("2_n2bhl")
+text = "Game Over"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="ButtonBox" type="Control" parent="MenuControl"]
+anchors_preset = 0
+offset_top = 540.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_lock_ = true
+
+[node name="ButtonRestart" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -242.5
+offset_right = 242.5
+offset_bottom = 60.0
+grow_horizontal = 2
+focus_neighbor_top = NodePath("../ButtonExit")
+focus_neighbor_bottom = NodePath("../ButtonBackToMenu")
+theme = ExtResource("3_beshc")
+text = "Restart Game"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonBackToMenu" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -246.0
+offset_top = 80.0
+offset_right = 246.0
+offset_bottom = 140.0
+grow_horizontal = 2
+focus_neighbor_top = NodePath("../ButtonRestart")
+focus_neighbor_bottom = NodePath("../ButtonExit")
+theme = ExtResource("3_beshc")
+text = "Back To Menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonExit" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -242.5
+offset_top = 160.0
+offset_right = 242.5
+offset_bottom = 220.0
+grow_horizontal = 2
+focus_neighbor_top = NodePath("../ButtonBackToMenu")
+focus_neighbor_bottom = NodePath("../ButtonRestart")
+theme = ExtResource("3_beshc")
+text = "Quit"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextAnimationClock" type="Timer" parent="."]
+
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonRestart" to="." method="_on_ButtonRestart_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonRestart" to="." method="_on_ButtonRestart_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonRestart" to="." method="_on_ButtonRestart_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonRestart" to="." method="_on_ButtonRestart_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonRestart" to="." method="_on_ButtonRestart_pressed"]
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonBackToMenu" to="." method="_on_ButtonBackToMenu_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonBackToMenu" to="." method="_on_ButtonBackToMenu_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonBackToMenu" to="." method="_on_ButtonBackToMenu_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonBackToMenu" to="." method="_on_ButtonBackToMenu_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonBackToMenu" to="." method="_on_ButtonBackToMenu_pressed"]
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonExit" to="." method="_on_ButtonExit_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonExit" to="." method="_on_ButtonExit_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonExit" to="." method="_on_ButtonExit_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonExit" to="." method="_on_ButtonExit_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonExit" to="." method="_on_ButtonExit_pressed"]
+[connection signal="timeout" from="TextAnimationClock" to="." method="_on_TextAnimationClock_timeout"]

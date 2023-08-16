@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ofkpr1s3cib"]
+
+[ext_resource type="Script" path="res://Scenes/Actors/Player/player_ui_texture_button.gd" id="1_mdfji"]
+[ext_resource type="Theme" uid="uid://dyvwn86aqeleu" path="res://Assets/Themes/Text/MenuButton.tres" id="2_larx8"]
+
+[node name="PlayerUITextureButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1820.0
+offset_bottom = -1050.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("1_mdfji")
+
+[node name="ColorRectBorder" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(1, 0.843137, 0, 1)
+
+[node name="ColorRectCenter" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.0784314, 0.301961, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 98.0
+offset_bottom = 28.0
+mouse_filter = 1
+theme = ExtResource("2_larx8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DisabledShadow" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 30.0
+color = Color(0.156863, 0.156863, 0.156863, 0.615686)
+
+[connection signal="button_down" from="." to="." method="_on_button_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_button_up"]
+[connection signal="focus_entered" from="." to="." method="_on_button_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_button_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_button_mouse_exited"]

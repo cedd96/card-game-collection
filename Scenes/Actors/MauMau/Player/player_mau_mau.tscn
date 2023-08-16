@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://deoyiqoow3481"]
+
+[ext_resource type="Script" path="res://Scenes/Actors/MauMau/Player/player_mau_mau.gd" id="1_p0tjv"]
+[ext_resource type="PackedScene" uid="uid://b7ofkpr1s3cib" path="res://Scenes/Actors/Player/player_ui_texture_button.tscn" id="2_1302l"]
+[ext_resource type="Theme" uid="uid://cafqmpty464he" path="res://Assets/Themes/Text/UserFrameLabel.tres" id="2_14770"]
+[ext_resource type="Theme" uid="uid://m3tj8dkv47h2" path="res://Assets/Themes/Text/MenuLabel.tres" id="4_afnmd"]
+[ext_resource type="PackedScene" uid="uid://wygneuta4w6c" path="res://Assets/Scenes/RemoteCaller.tscn" id="5_ixpr5"]
+
+[node name="PlayerMauMau" type="Node2D"]
+script = ExtResource("1_p0tjv")
+
+[node name="CardControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 17.0
+offset_right = 927.0
+offset_bottom = 151.2
+
+[node name="PlayerUITextureButtonMenu" parent="." instance=ExtResource("2_1302l")]
+offset_left = 55.0
+offset_top = 167.0
+offset_right = 155.0
+offset_bottom = 197.0
+labelText = "Menu"
+
+[node name="CharacterName" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.0
+offset_top = 170.0
+offset_right = 106.0
+offset_bottom = 193.0
+grow_horizontal = 2
+theme = ExtResource("2_14770")
+text = "You"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardCountLabel" type="Label" parent="."]
+visible = false
+offset_left = -41.0
+offset_top = -63.0
+offset_right = 41.0
+theme = ExtResource("4_afnmd")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RemoteCaller" parent="." instance=ExtResource("5_ixpr5")]
+
+[node name="RemoteCaller2" parent="." instance=ExtResource("5_ixpr5")]
+
+[connection signal="pressed" from="PlayerUITextureButtonMenu" to="." method="_on_player_ui_texture_button_menu_pressed"]

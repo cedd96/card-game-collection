@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cdq8w13sc7q2k"]
+
+[ext_resource type="FontFile" uid="uid://lkm4jfkde0y4" path="res://Assets/Fonts/joystix/joystix monospace.otf" id="1"]
+
+[resource]
+default_font = ExtResource("1")
+Label/font_sizes/font_size = 100

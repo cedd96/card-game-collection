@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3lbfdnjw6n75"]
+
+[ext_resource type="Texture2D" uid="uid://tvbif6t4y6mb" path="res://Assets/Sprites/Utility/FocusMarkerArrow300x300.png" id="1_gn0tr"]
+[ext_resource type="Script" path="res://Scenes/Helper/FocusMarker/focus_marker.gd" id="2_bqamg"]
+
+[node name="FocusMarker" type="Sprite2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_gn0tr")
+script = ExtResource("2_bqamg")
+
+[node name="Color" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, -80, 150, -80, 150, 80, 0, 80, -160, 0)

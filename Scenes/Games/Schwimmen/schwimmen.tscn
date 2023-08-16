@@ -1,0 +1,120 @@
+[gd_scene load_steps=9 format=3 uid="uid://dcdikyvsl31da"]
+
+[ext_resource type="Script" path="res://Scenes/Games/Schwimmen/schwimmen.gd" id="1_ryreb"]
+[ext_resource type="PackedScene" uid="uid://doycccy5qjbtb" path="res://Scenes/Games/Utility/Kartenstapel/kartenstapel.tscn" id="2_jvsej"]
+[ext_resource type="Theme" uid="uid://m3tj8dkv47h2" path="res://Assets/Themes/Text/MenuLabel.tres" id="2_rigur"]
+[ext_resource type="PackedScene" uid="uid://i45v24uk6wt6" path="res://Scenes/Actors/Player/player.tscn" id="4_6lv3a"]
+[ext_resource type="PackedScene" uid="uid://wygneuta4w6c" path="res://Assets/Scenes/RemoteCaller.tscn" id="7_ku8pw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e3nex"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3om8m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sq8su"]
+
+[node name="Schwimmen" type="Node2D"]
+process_priority = 1
+script = ExtResource("1_ryreb")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.109804, 0.2, 0.0862745, 1)
+metadata/_edit_lock_ = true
+
+[node name="SystemMessage" type="Label" parent="."]
+offset_left = 310.0
+offset_top = 320.0
+offset_right = 1610.0
+offset_bottom = 383.0
+theme = ExtResource("2_rigur")
+horizontal_alignment = 1
+
+[node name="TextBuffer" type="Timer" parent="SystemMessage"]
+
+[node name="AdditionalDelayTimer" type="Timer" parent="SystemMessage"]
+
+[node name="Gameobjects" type="Node2D" parent="."]
+
+[node name="Kartenstapel" parent="Gameobjects" instance=ExtResource("2_jvsej")]
+position = Vector2(1280, 540)
+
+[node name="Feldkarten" type="Node2D" parent="Gameobjects"]
+position = Vector2(960, 540)
+
+[node name="CardButton1" type="Button" parent="Gameobjects/Feldkarten"]
+offset_left = -185.0
+offset_top = -108.0
+offset_right = -65.0
+offset_bottom = 108.0
+focus_neighbor_left = NodePath("../CardButton3")
+focus_neighbor_right = NodePath("../CardButton2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e3nex")
+flat = true
+
+[node name="CardButton2" type="Button" parent="Gameobjects/Feldkarten"]
+offset_left = -60.0
+offset_top = -108.0
+offset_right = 60.0
+offset_bottom = 108.0
+focus_neighbor_left = NodePath("../CardButton1")
+focus_neighbor_right = NodePath("../CardButton3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3om8m")
+flat = true
+
+[node name="CardButton3" type="Button" parent="Gameobjects/Feldkarten"]
+offset_left = 65.0
+offset_top = -108.0
+offset_right = 185.0
+offset_bottom = 108.0
+focus_neighbor_left = NodePath("../CardButton2")
+focus_neighbor_right = NodePath("../CardButton1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sq8su")
+flat = true
+
+[node name="Participants" type="Node2D" parent="Gameobjects"]
+
+[node name="Player" parent="Gameobjects/Participants" instance=ExtResource("4_6lv3a")]
+position = Vector2(960, 840)
+
+[node name="GameBuffer" type="Timer" parent="."]
+
+[node name="RoundStartTimer" type="Timer" parent="."]
+
+[node name="GameSequenceTimer" type="Timer" parent="."]
+
+[node name="ShortDelayTimer" type="Timer" parent="."]
+
+[node name="PlayerStartTurnTimer" type="Timer" parent="."]
+
+[node name="NextStartTurnTimer" type="Timer" parent="."]
+
+[node name="CardswapDelayTimer" type="Timer" parent="."]
+
+[node name="CardswapTextchangeTimer" type="Timer" parent="."]
+
+[node name="RemoteCaller" parent="." instance=ExtResource("7_ku8pw")]
+
+[connection signal="timeout" from="SystemMessage/TextBuffer" to="." method="_on_text_buffer_timeout"]
+[connection signal="timeout" from="SystemMessage/AdditionalDelayTimer" to="." method="_on_additional_delay_timer_timeout"]
+[connection signal="pressed" from="Gameobjects/Feldkarten/CardButton1" to="." method="_on_card_button_1_pressed"]
+[connection signal="pressed" from="Gameobjects/Feldkarten/CardButton2" to="." method="_on_card_button_2_pressed"]
+[connection signal="pressed" from="Gameobjects/Feldkarten/CardButton3" to="." method="_on_card_button_3_pressed"]
+[connection signal="card_1_selected" from="Gameobjects/Participants/Player" to="." method="_on_player_card_1_selected"]
+[connection signal="card_2_selected" from="Gameobjects/Participants/Player" to="." method="_on_player_card_2_selected"]
+[connection signal="card_3_selected" from="Gameobjects/Participants/Player" to="." method="_on_player_card_3_selected"]
+[connection signal="ending_turn" from="Gameobjects/Participants/Player" to="." method="_on_player_ending_turn"]
+[connection signal="has_lost" from="Gameobjects/Participants/Player" to="." method="_on_player_has_lost"]
+[connection signal="menu_pressed" from="Gameobjects/Participants/Player" to="." method="_on_player_menu_pressed"]
+[connection signal="player_checked" from="Gameobjects/Participants/Player" to="." method="_on_current_checked"]
+[connection signal="player_passed" from="Gameobjects/Participants/Player" to="." method="_on_current_passed"]
+[connection signal="winning_hand_31" from="Gameobjects/Participants/Player" to="." method="_on_winning_hand_31"]
+[connection signal="winning_hand_blitz" from="Gameobjects/Participants/Player" to="." method="_on_winning_hand_blitz"]
+[connection signal="timeout" from="GameBuffer" to="." method="_on_game_buffer_timeout"]
+[connection signal="timeout" from="RoundStartTimer" to="." method="_on_round_start_timer_timeout"]
+[connection signal="timeout" from="GameSequenceTimer" to="." method="_on_game_sequence_timer_timeout"]
+[connection signal="timeout" from="ShortDelayTimer" to="." method="_on_short_delay_timer_timeout"]
+[connection signal="timeout" from="PlayerStartTurnTimer" to="." method="_on_player_start_turn_timer_timeout"]
+[connection signal="timeout" from="NextStartTurnTimer" to="." method="_on_next_start_turn_timer_timeout"]
+[connection signal="timeout" from="CardswapDelayTimer" to="." method="_on_cardswap_delay_timer_timeout"]
+[connection signal="timeout" from="CardswapTextchangeTimer" to="." method="_on_cardswap_textchange_timer_timeout"]

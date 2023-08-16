@@ -1,0 +1,147 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4ruqwvq6mbqo"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/Pause/HowToPlay/PauseHowToPlay.gd" id="1_ggppp"]
+[ext_resource type="Theme" uid="uid://m3tj8dkv47h2" path="res://Assets/Themes/Text/MenuLabel.tres" id="1_qbyus"]
+[ext_resource type="Theme" uid="uid://dyvwn86aqeleu" path="res://Assets/Themes/Text/MenuButton.tres" id="2_c7wi1"]
+
+[node name="PauseHowToPlaySchwimmen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_ggppp")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.776471)
+metadata/_edit_lock_ = true
+
+[node name="ControlschemeControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 160.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="ControlschemeControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.0
+offset_right = 164.0
+offset_bottom = 63.0
+grow_horizontal = 2
+theme = ExtResource("1_qbyus")
+text = "Controls:"
+
+[node name="Label" type="Label" parent="ControlschemeControl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -609.0
+offset_top = -80.0
+offset_right = 609.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_qbyus")
+theme_override_font_sizes/font_size = 26
+text = "you can Control menus with the mouse, arrowkeys or WASD
+during a game you can open the pause menu with \"ESC\" or \"Backspace\""
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="RulesetControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 200.0
+offset_right = 1920.0
+offset_bottom = 939.0
+
+[node name="Title" type="Label" parent="RulesetControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("1_qbyus")
+text = "Ruleset (Schwimmen, 31):"
+
+[node name="Label" type="Label" parent="RulesetControl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -850.5
+offset_top = -490.0
+offset_right = 850.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_qbyus")
+theme_override_font_sizes/font_size = 26
+text = "The Player with the highest Value of handcards at the end of each round wins.
+Players lose a life when they lose a round, if they have no lives left they are swimmning and once a player loses a round while swimming, they lost the game.
+the last player in the game wins. 
+
+The round is instantly over if a player has a handvalue of 31 or three aces.
+in case of three aces, everyone else loses the round. otherwise the player/s with the lowest values lose.
+
+Players can trade single cards or the full hand with the fieldcards.
+Checking means to skip ones turn, passing means that the round is over when it would be your turn next.
+
+If a player performs one of the actions above the next players turn begins.
+
+The Cardvalues \"K\", \"D\" and \"B\" all count for 10, \"A\" counts for 11.
+Cards of the same Type (e.g. Cross) are additive.
+Having 3 cards of the same value (e.g. \"7\", \"7\", \"7\") counts for 30.5."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MenuControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="ButtonBox" type="Control" parent="MenuControl"]
+anchors_preset = 0
+offset_top = 960.0
+offset_right = 1920.0
+offset_bottom = 1014.0
+
+[node name="ButtonBack" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -60.0
+offset_right = 82.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_c7wi1")
+text = "Back"
+
+[node name="TextAnimationClock" type="Timer" parent="."]
+
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_pressed"]
+[connection signal="timeout" from="TextAnimationClock" to="." method="_on_TextAnimationClock_timeout"]

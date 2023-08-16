@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpwwrrcgxofaf"]
+
+[ext_resource type="Texture2D" uid="uid://brn62f2r65c3d" path="res://Assets/Sprites/Cards/Aseprite/Cardbodies/BlackTemp.png" id="1_whdhc"]
+[ext_resource type="Script" path="res://Scenes/Games/Utility/Kartenstapel/Karten/karte.gd" id="1_yxjdn"]
+[ext_resource type="FontFile" uid="uid://lkm4jfkde0y4" path="res://Assets/Fonts/joystix/joystix monospace.otf" id="3_nj8x2"]
+[ext_resource type="Texture2D" uid="uid://b4mx5hlp80ps4" path="res://Assets/Sprites/Cards/Aseprite/40x40_Icons/Cross_40x40.png" id="3_qceef"]
+
+[node name="Karte" type="TextureRect"]
+offset_right = 240.0
+offset_bottom = 432.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_whdhc")
+script = ExtResource("1_yxjdn")
+
+[node name="ColorTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 40.0
+offset_right = 80.0
+offset_bottom = 200.0
+grow_horizontal = 2
+texture = ExtResource("3_qceef")
+metadata/_edit_lock_ = true
+
+[node name="TypeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_top = -163.0
+offset_right = 83.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_nj8x2")
+theme_override_font_sizes/font_size = 120
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Highlighter" type="ColorRect" parent="."]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 243.0
+offset_bottom = 435.0
+mouse_filter = 1
+color = Color(1, 0.843137, 0, 1)
+metadata/_edit_lock_ = true

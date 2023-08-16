@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2t477on1kyg1"]
+
+[ext_resource type="Theme" uid="uid://cafqmpty464he" path="res://Assets/Themes/Text/UserFrameLabel.tres" id="1_b2qws"]
+[ext_resource type="Script" path="res://Scenes/Games/Schwimmen/character_information.gd" id="1_vfcst"]
+[ext_resource type="Texture2D" uid="uid://d2whjuwy6alwl" path="res://Assets/UI/UserIcon/LifeSymbol_40x42.png" id="3_shti0"]
+
+[node name="PlayerInformationWidget" type="Node2D"]
+script = ExtResource("1_vfcst")
+
+[node name="CharacterName" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.0
+offset_top = 212.0
+offset_right = 106.0
+offset_bottom = 235.0
+grow_horizontal = 2
+theme = ExtResource("1_b2qws")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -61.0
+offset_top = 170.0
+offset_right = 62.0
+offset_bottom = 212.0
+metadata/_edit_lock_ = true
+
+[node name="LifeTexture1" type="TextureRect" parent="HealthControl"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_shti0")
+
+[node name="LifeTexture2" type="TextureRect" parent="HealthControl"]
+layout_mode = 0
+offset_left = 41.0
+offset_right = 81.0
+offset_bottom = 42.0
+texture = ExtResource("3_shti0")
+
+[node name="LifeTexture3" type="TextureRect" parent="HealthControl"]
+layout_mode = 0
+offset_left = 82.0
+offset_right = 122.0
+offset_bottom = 42.0
+texture = ExtResource("3_shti0")

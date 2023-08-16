@@ -1,0 +1,131 @@
+[gd_scene load_steps=8 format=3 uid="uid://i45v24uk6wt6"]
+
+[ext_resource type="Script" path="res://Scenes/Actors/Player/player.gd" id="1_tghs1"]
+[ext_resource type="PackedScene" uid="uid://b2t477on1kyg1" path="res://Scenes/Games/Schwimmen/PlayerInformationWidget.tscn" id="2_6j568"]
+[ext_resource type="PackedScene" uid="uid://b7ofkpr1s3cib" path="res://Scenes/Actors/Player/player_ui_texture_button.tscn" id="3_nifwd"]
+[ext_resource type="Theme" uid="uid://m3tj8dkv47h2" path="res://Assets/Themes/Text/MenuLabel.tres" id="4_tn4e7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g6i52"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_od8v4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_66084"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_tghs1")
+
+[node name="PlayerInformationWidget" parent="." instance=ExtResource("2_6j568")]
+
+[node name="PlayerControls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_right = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameButtons" type="Control" parent="PlayerControls"]
+anchors_preset = 0
+offset_left = 150.0
+offset_top = 20.0
+offset_right = 250.0
+offset_bottom = 120.0
+
+[node name="PlayerUITextureButtonSchieben" parent="PlayerControls/GameButtons" instance=ExtResource("3_nifwd")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = -70.0
+focus_neighbor_left = NodePath("../../../CardButton3")
+focus_neighbor_top = NodePath("../PlayerUITextureButtonMenu")
+focus_neighbor_bottom = NodePath("../PlayerUITextureButtonPassen")
+disabled = true
+labelText = "Check"
+
+[node name="PlayerUITextureButtonPassen" parent="PlayerControls/GameButtons" instance=ExtResource("3_nifwd")]
+layout_mode = 1
+offset_top = 35.0
+offset_right = 0.0
+offset_bottom = -35.0
+focus_neighbor_left = NodePath("../../../CardButton3")
+focus_neighbor_top = NodePath("../PlayerUITextureButtonSchieben")
+focus_neighbor_bottom = NodePath("../PlayerUITextureButtonMenu")
+disabled = true
+labelText = "Pass"
+
+[node name="PlayerUITextureButtonMenu" parent="PlayerControls/GameButtons" instance=ExtResource("3_nifwd")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 70.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 1
+grow_vertical = 1
+focus_neighbor_left = NodePath("../../../CardButton3")
+focus_neighbor_top = NodePath("../PlayerUITextureButtonPassen")
+focus_neighbor_bottom = NodePath("../PlayerUITextureButtonSchieben")
+labelText = "Pause"
+
+[node name="CardButton1" type="Button" parent="."]
+offset_left = -131.0
+offset_top = -5.6
+offset_right = -47.0
+offset_bottom = 145.6
+focus_neighbor_left = NodePath("../CardButton3")
+focus_neighbor_top = NodePath("../PlayerControls/GameButtons/PlayerUITextureButtonMenu")
+focus_neighbor_right = NodePath("../CardButton2")
+focus_neighbor_bottom = NodePath("../PlayerControls/GameButtons/PlayerUITextureButtonSchieben")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g6i52")
+flat = true
+
+[node name="CardButton2" type="Button" parent="."]
+z_index = 1
+offset_left = -42.0
+offset_top = -5.6
+offset_right = 42.0
+offset_bottom = 145.6
+focus_neighbor_left = NodePath("../CardButton1")
+focus_neighbor_top = NodePath("../PlayerControls/GameButtons/PlayerUITextureButtonMenu")
+focus_neighbor_right = NodePath("../CardButton3")
+focus_neighbor_bottom = NodePath("../PlayerControls/GameButtons/PlayerUITextureButtonSchieben")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_od8v4")
+flat = true
+
+[node name="CardButton3" type="Button" parent="."]
+offset_left = 47.0
+offset_top = -5.6
+offset_right = 131.0
+offset_bottom = 145.6
+focus_neighbor_left = NodePath("../CardButton2")
+focus_neighbor_top = NodePath("../PlayerControls/GameButtons/PlayerUITextureButtonMenu")
+focus_neighbor_right = NodePath("../CardButton1")
+focus_neighbor_bottom = NodePath("../PlayerControls/GameButtons/PlayerUITextureButtonSchieben")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_66084")
+flat = true
+
+[node name="PointLabel" type="Label" parent="."]
+visible = false
+offset_left = -50.0
+offset_top = -53.0
+offset_right = 50.0
+offset_bottom = -21.0
+theme = ExtResource("4_tn4e7")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardExpandTimer1" type="Timer" parent="."]
+
+[node name="CardExpandTimer2" type="Timer" parent="."]
+
+[node name="CardExpandTimer3" type="Timer" parent="."]
+
+[connection signal="pressed" from="PlayerControls/GameButtons/PlayerUITextureButtonSchieben" to="." method="_on_player_schieben_pressed"]
+[connection signal="pressed" from="PlayerControls/GameButtons/PlayerUITextureButtonPassen" to="." method="_on_player_passen_pressed"]
+[connection signal="pressed" from="PlayerControls/GameButtons/PlayerUITextureButtonMenu" to="." method="_on_player_ui_texture_button_menu_pressed"]
+[connection signal="timeout" from="CardExpandTimer1" to="." method="_on_card_expand_timer_1_timeout"]
+[connection signal="timeout" from="CardExpandTimer2" to="." method="_on_card_expand_timer_2_timeout"]
+[connection signal="timeout" from="CardExpandTimer3" to="." method="_on_card_expand_timer_3_timeout"]

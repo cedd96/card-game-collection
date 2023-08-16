@@ -1,0 +1,203 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca6obvmuuhdod"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/Play/menu_play.gd" id="1_3pwaj"]
+[ext_resource type="Theme" uid="uid://cdq8w13sc7q2k" path="res://Assets/Themes/Text/MenuTitle.tres" id="1_gti5h"]
+[ext_resource type="Theme" uid="uid://dyvwn86aqeleu" path="res://Assets/Themes/Text/MenuButton.tres" id="2_cj7r7"]
+[ext_resource type="Theme" uid="uid://m3tj8dkv47h2" path="res://Assets/Themes/Text/MenuLabel.tres" id="3_lcxug"]
+
+[node name="MenuPlay" type="CanvasLayer"]
+script = ExtResource("1_3pwaj")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.109804, 0.2, 0.0862745, 1)
+metadata/_edit_lock_ = true
+
+[node name="MenuControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuTitle" type="Label" parent="MenuControl"]
+layout_mode = 0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -340.0
+offset_bottom = -145.0
+theme = ExtResource("1_gti5h")
+text = "Play"
+horizontal_alignment = 1
+
+[node name="ButtonBox" type="Control" parent="MenuControl"]
+anchors_preset = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -540.0
+
+[node name="GameOptionControl" type="Control" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -573.0
+offset_right = 573.0
+offset_bottom = 85.0
+grow_horizontal = 2
+
+[node name="GameOptionLabel" type="Label" parent="MenuControl/ButtonBox/GameOptionControl"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -31.5
+offset_right = 451.0
+offset_bottom = 31.5
+grow_vertical = 2
+theme = ExtResource("3_lcxug")
+text = "Select Game
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOptionButton" type="OptionButton" parent="MenuControl/ButtonBox/GameOptionControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.0
+offset_top = 15.0
+offset_right = 534.0
+offset_bottom = 75.0
+grow_horizontal = 2
+focus_neighbor_top = NodePath("../../ButtonBack")
+focus_neighbor_bottom = NodePath("../../PlayernumberControl/PlayernumberButton")
+theme = ExtResource("2_cj7r7")
+alignment = 1
+item_count = 2
+popup/item_0/text = "Schwimmen (31)"
+popup/item_0/id = 0
+popup/item_1/text = "Mau-Mau"
+popup/item_1/id = 1
+
+[node name="Background" type="ColorRect" parent="MenuControl/ButtonBox/GameOptionControl/GameOptionButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 588.0
+offset_bottom = 60.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PlayernumberControl" type="Control" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -499.0
+offset_top = 100.0
+offset_right = 499.0
+offset_bottom = 185.0
+grow_horizontal = 2
+
+[node name="PlayernumberLabel" type="Label" parent="MenuControl/ButtonBox/PlayernumberControl"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -31.5
+offset_right = 574.0
+offset_bottom = 31.5
+grow_vertical = 2
+theme = ExtResource("3_lcxug")
+text = "Number of NPCs"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayernumberButton" type="OptionButton" parent="MenuControl/ButtonBox/PlayernumberControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 143.0
+offset_top = -27.5
+offset_right = 263.0
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../GameOptionControl/GameOptionButton")
+focus_neighbor_bottom = NodePath("../../ButtonStart")
+theme = ExtResource("2_cj7r7")
+disabled = true
+flat = true
+alignment = 1
+
+[node name="Background" type="ColorRect" parent="MenuControl/ButtonBox/PlayernumberControl/PlayernumberButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 60.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ButtonStart" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -99.0
+offset_top = 220.0
+offset_right = 99.0
+offset_bottom = 280.0
+grow_horizontal = 2
+focus_neighbor_top = NodePath("../PlayernumberControl/PlayernumberButton")
+focus_neighbor_bottom = NodePath("../ButtonBack")
+theme = ExtResource("2_cj7r7")
+disabled = true
+text = "Start"
+
+[node name="ButtonBack" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_top = 300.0
+offset_right = 82.0
+offset_bottom = 360.0
+grow_horizontal = 2
+focus_neighbor_top = NodePath("../ButtonStart")
+focus_neighbor_bottom = NodePath("../GameOptionControl/GameOptionButton")
+theme = ExtResource("2_cj7r7")
+text = "Back
+"
+
+[node name="TextAnimationClock" type="Timer" parent="."]
+
+[connection signal="focus_entered" from="MenuControl/ButtonBox/GameOptionControl/GameOptionButton" to="." method="_on_GameOptionButton_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/GameOptionControl/GameOptionButton" to="." method="_on_GameOptionButton_focus_exited"]
+[connection signal="item_selected" from="MenuControl/ButtonBox/GameOptionControl/GameOptionButton" to="." method="_on_GameOptionButton_item_selected"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/GameOptionControl/GameOptionButton" to="." method="_on_GameOptionButton_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/GameOptionControl/GameOptionButton" to="." method="_on_GameOptionButton_mouse_exited"]
+[connection signal="focus_entered" from="MenuControl/ButtonBox/PlayernumberControl/PlayernumberButton" to="." method="_on_PlayernumberButton_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/PlayernumberControl/PlayernumberButton" to="." method="_on_PlayernumberButton_focus_exited"]
+[connection signal="item_selected" from="MenuControl/ButtonBox/PlayernumberControl/PlayernumberButton" to="." method="_on_PlayernumberButton_item_selected"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/PlayernumberControl/PlayernumberButton" to="." method="_on_PlayernumberButton_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/PlayernumberControl/PlayernumberButton" to="." method="_on_PlayernumberButton_mouse_exited"]
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonStart" to="." method="_on_ButtonStart_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonStart" to="." method="_on_ButtonStart_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonStart" to="." method="_on_ButtonStart_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonStart" to="." method="_on_ButtonStart_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonStart" to="." method="_on_ButtonStart_pressed"]
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_pressed"]
+[connection signal="timeout" from="TextAnimationClock" to="." method="_on_TextAnimationClock_timeout"]

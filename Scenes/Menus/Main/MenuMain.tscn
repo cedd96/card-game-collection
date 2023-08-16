@@ -1,0 +1,117 @@
+[gd_scene load_steps=4 format=3 uid="uid://itl4u35ksmk6"]
+
+[ext_resource type="Theme" uid="uid://cdq8w13sc7q2k" path="res://Assets/Themes/Text/MenuTitle.tres" id="1"]
+[ext_resource type="Theme" uid="uid://dyvwn86aqeleu" path="res://Assets/Themes/Text/MenuButton.tres" id="2"]
+[ext_resource type="Script" path="res://Scenes/Menus/Main/MenuMain.gd" id="4"]
+
+[node name="MenuMain" type="CanvasLayer"]
+script = ExtResource("4")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.109804, 0.2, 0.0862745, 1)
+metadata/_edit_lock_ = true
+
+[node name="MenuControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuTitle" type="Label" parent="MenuControl"]
+layout_mode = 0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -340.0
+offset_bottom = -145.0
+theme = ExtResource("1")
+text = "Projekt AE"
+horizontal_alignment = 1
+
+[node name="ButtonBox" type="Control" parent="MenuControl"]
+anchors_preset = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -540.0
+
+[node name="ButtonPlay" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_right = 82.0
+offset_bottom = 60.0
+grow_horizontal = 2
+focus_neighbor_top = NodePath("../ButtonExit")
+theme = ExtResource("2")
+text = "Play"
+
+[node name="ButtonTutorials" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.5
+offset_top = 80.0
+offset_right = 225.5
+offset_bottom = 140.0
+grow_horizontal = 2
+theme = ExtResource("2")
+text = "How to Play"
+
+[node name="ButtonSettings" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.0
+offset_top = 160.0
+offset_right = 164.0
+offset_bottom = 220.0
+grow_horizontal = 2
+theme = ExtResource("2")
+text = "Settings"
+
+[node name="ButtonExit" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_top = 240.0
+offset_right = 82.0
+offset_bottom = 300.0
+grow_horizontal = 2
+focus_neighbor_bottom = NodePath("../ButtonPlay")
+theme = ExtResource("2")
+text = "Quit"
+
+[node name="TextAnimationClock" type="Timer" parent="."]
+
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonPlay" to="." method="_on_ButtonPlay_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonPlay" to="." method="_on_ButtonPlay_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonPlay" to="." method="_on_ButtonPlay_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonPlay" to="." method="_on_ButtonPlay_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonPlay" to="." method="_on_ButtonPlay_pressed"]
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonTutorials" to="." method="_on_ButtonTutorials_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonTutorials" to="." method="_on_ButtonTutorials_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonTutorials" to="." method="_on_ButtonTutorials_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonTutorials" to="." method="_on_ButtonTutorials_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonTutorials" to="." method="_on_ButtonTutorials_pressed"]
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonSettings" to="." method="_on_ButtonSettings_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonSettings" to="." method="_on_ButtonSettings_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonSettings" to="." method="_on_ButtonSettings_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonSettings" to="." method="_on_ButtonSettings_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonSettings" to="." method="_on_ButtonSettings_pressed"]
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonExit" to="." method="_on_ButtonExit_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonExit" to="." method="_on_ButtonExit_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonExit" to="." method="_on_ButtonExit_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonExit" to="." method="_on_ButtonExit_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonExit" to="." method="_on_ButtonExit_pressed"]
+[connection signal="timeout" from="TextAnimationClock" to="." method="_on_TextAnimationClock_timeout"]

@@ -1,0 +1,152 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvcacpqwq1v8s"]
+
+[ext_resource type="Script" path="res://Scenes/Menus/Accessibility/AccessibilityColorPicker/AccessibilityColorPicker.gd" id="1_w80ik"]
+[ext_resource type="Theme" uid="uid://cdq8w13sc7q2k" path="res://Assets/Themes/Text/MenuTitle.tres" id="2_a3ktr"]
+[ext_resource type="Theme" uid="uid://dyvwn86aqeleu" path="res://Assets/Themes/Text/MenuButton.tres" id="3_7aobx"]
+[ext_resource type="Theme" uid="uid://m3tj8dkv47h2" path="res://Assets/Themes/Text/MenuLabel.tres" id="3_ju2t0"]
+
+[node name="AccessibilityColorPicker" type="CanvasLayer"]
+script = ExtResource("1_w80ik")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.109804, 0.2, 0.0862745, 1)
+metadata/_edit_lock_ = true
+
+[node name="MenuControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuTitle" type="Label" parent="MenuControl"]
+layout_mode = 0
+anchor_right = 1.0
+offset_top = 200.0
+offset_bottom = 296.0
+theme = ExtResource("2_a3ktr")
+text = "ColorBlind Mode"
+horizontal_alignment = 1
+
+[node name="TextColor" type="Label" parent="MenuControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -307.5
+offset_top = -60.0
+offset_right = 143.5
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_ju2t0")
+text = "Text Color:"
+
+[node name="BackgroundColor" type="Label" parent="MenuControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -553.5
+offset_top = 20.0
+offset_right = 143.5
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_ju2t0")
+text = "Background Color:"
+horizontal_alignment = 1
+
+[node name="ButtonBox" type="Control" parent="MenuControl"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -380.0
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ButtonDefault" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -363.5
+offset_right = 363.5
+offset_bottom = 60.0
+grow_horizontal = 2
+focus_neighbor_top = NodePath("../../../BackgroundColorPicker")
+focus_neighbor_bottom = NodePath("../ButtonBack")
+theme = ExtResource("3_7aobx")
+text = "Restore to Default"
+
+[node name="ButtonBack" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -208.0
+offset_right = 82.0
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_top = NodePath("../ButtonDefault")
+focus_neighbor_bottom = NodePath("../../../TextColorPicker")
+theme = ExtResource("3_7aobx")
+text = "Back"
+
+[node name="TextAnimationClock" type="Timer" parent="."]
+
+[node name="TextColorPicker" type="ColorPickerButton" parent="."]
+offset_left = 1120.0
+offset_top = 470.0
+offset_right = 1258.0
+offset_bottom = 548.0
+focus_neighbor_top = NodePath("../MenuControl/ButtonBox/ButtonBack")
+focus_neighbor_bottom = NodePath("../BackgroundColorPicker")
+color = Color(1, 1, 1, 1)
+
+[node name="BackgroundColorPicker" type="ColorPickerButton" parent="."]
+offset_left = 1120.0
+offset_top = 550.0
+offset_right = 1258.0
+offset_bottom = 628.0
+focus_neighbor_top = NodePath("../TextColorPicker")
+focus_neighbor_bottom = NodePath("../MenuControl/ButtonBox/ButtonDefault")
+color = Color(1, 1, 1, 1)
+
+[connection signal="button_up" from="MenuControl/ButtonBox/ButtonDefault" to="." method="_on_button_default_button_up"]
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonDefault" to="." method="_on_button_default_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonDefault" to="." method="_on_button_default_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonDefault" to="." method="_on_button_default_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonDefault" to="." method="_on_button_default_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonDefault" to="." method="_on_button_default_pressed"]
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_button_back_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_button_back_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_button_back_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_button_back_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="timeout" from="TextAnimationClock" to="." method="_on_text_animation_clock_timeout"]
+[connection signal="color_changed" from="TextColorPicker" to="." method="_on_text_color_picker_color_changed"]
+[connection signal="focus_entered" from="TextColorPicker" to="." method="_on_text_color_picker_button_focus_entered"]
+[connection signal="focus_exited" from="TextColorPicker" to="." method="_on_text_color_picker_button_focus_exited"]
+[connection signal="mouse_entered" from="TextColorPicker" to="." method="_on_text_color_picker_button_mouse_entered"]
+[connection signal="mouse_exited" from="TextColorPicker" to="." method="_on_text_color_picker_button_mouse_exited"]
+[connection signal="popup_closed" from="TextColorPicker" to="." method="_on_text_color_picker_button_popup_closed"]
+[connection signal="color_changed" from="BackgroundColorPicker" to="." method="_on_background_color_picker_button_color_changed"]
+[connection signal="focus_entered" from="BackgroundColorPicker" to="." method="_on_background_color_picker_button_focus_entered"]
+[connection signal="focus_exited" from="BackgroundColorPicker" to="." method="_on_background_color_picker_button_focus_exited"]
+[connection signal="mouse_entered" from="BackgroundColorPicker" to="." method="_on_background_color_picker_button_mouse_entered"]
+[connection signal="mouse_exited" from="BackgroundColorPicker" to="." method="_on_background_color_picker_button_mouse_exited"]

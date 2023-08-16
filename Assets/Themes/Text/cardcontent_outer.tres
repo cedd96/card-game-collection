@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cito1govxoc1f"]
+
+[ext_resource type="FontFile" uid="uid://lkm4jfkde0y4" path="res://Assets/Fonts/joystix/joystix monospace.otf" id="1_ja4ey"]
+
+[resource]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("1_ja4ey")

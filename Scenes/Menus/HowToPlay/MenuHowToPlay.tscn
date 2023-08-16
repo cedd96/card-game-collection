@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0rhddmpmqdff"]
+
+[ext_resource type="Theme" uid="uid://cdq8w13sc7q2k" path="res://Assets/Themes/Text/MenuTitle.tres" id="1"]
+[ext_resource type="Script" path="res://Scenes/Menus/HowToPlay/MenuHowToPlay.gd" id="2"]
+[ext_resource type="Theme" uid="uid://dyvwn86aqeleu" path="res://Assets/Themes/Text/MenuButton.tres" id="3"]
+
+[node name="MenuHowToPlay" type="CanvasLayer"]
+script = ExtResource("2")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.109804, 0.2, 0.0862745, 1)
+metadata/_edit_lock_ = true
+
+[node name="MenuControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuTitle" type="Label" parent="MenuControl"]
+layout_mode = 0
+anchor_right = 1.0
+offset_top = 200.0
+offset_bottom = 296.0
+theme = ExtResource("1")
+text = "How to play"
+horizontal_alignment = 1
+
+[node name="ButtonBox" type="Control" parent="MenuControl"]
+anchors_preset = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -540.0
+
+[node name="ButtonSchwimmen" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -184.5
+offset_right = 184.5
+offset_bottom = 60.0
+grow_horizontal = 2
+focus_neighbor_top = NodePath("../ButtonBack")
+theme = ExtResource("3")
+text = "Schwimmen"
+
+[node name="ButtonMauMau" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -143.5
+offset_top = 80.0
+offset_right = 143.5
+offset_bottom = 140.0
+grow_horizontal = 2
+theme = ExtResource("3")
+text = "Mau-Mau"
+
+[node name="ButtonBack" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_top = 160.0
+offset_right = 82.0
+offset_bottom = 220.0
+grow_horizontal = 2
+focus_neighbor_bottom = NodePath("../ButtonSchwimmen")
+theme = ExtResource("3")
+text = "Back"
+
+[node name="TextAnimationClock" type="Timer" parent="."]
+
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonSchwimmen" to="." method="_on_ButtonSchwimmen_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonSchwimmen" to="." method="_on_ButtonSchwimmen_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonSchwimmen" to="." method="_on_ButtonSchwimmen_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonSchwimmen" to="." method="_on_ButtonSchwimmen_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonSchwimmen" to="." method="_on_ButtonSchwimmen_pressed"]
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonMauMau" to="." method="_on_ButtonMauMau_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonMauMau" to="." method="_on_ButtonMauMau_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonMauMau" to="." method="_on_ButtonMauMau_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonMauMau" to="." method="_on_ButtonMauMau_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonMauMau" to="." method="_on_ButtonMauMau_pressed"]
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_pressed"]
+[connection signal="timeout" from="TextAnimationClock" to="." method="_on_TextAnimationClock_timeout"]

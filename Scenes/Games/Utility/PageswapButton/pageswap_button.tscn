@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpfqnbx2x7nwi"]
+
+[ext_resource type="Script" path="res://Scenes/Games/Utility/PageswapButton/pageswap_button.gd" id="1_bstcg"]
+[ext_resource type="Theme" uid="uid://m3tj8dkv47h2" path="res://Assets/Themes/Text/MenuLabel.tres" id="2_d2y3r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2xljr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t611b"]
+
+[node name="PageswapButton" type="Button"]
+offset_right = 50.0
+offset_bottom = 50.0
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2xljr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t611b")
+flat = true
+script = ExtResource("1_bstcg")
+
+[node name="BorderColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BodyColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ButtonLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -8.0
+offset_right = 46.0
+offset_bottom = 55.0
+theme = ExtResource("2_d2y3r")
+theme_override_font_sizes/font_size = 50
+
+[node name="DisabledShadow" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 50.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.372549)
+
+[connection signal="button_down" from="." to="." method="_on_ButtonDown"]
+[connection signal="button_up" from="." to="." method="_on_ButtonUp"]
+[connection signal="focus_entered" from="." to="." method="_on_Focused_or_Hovered"]
+[connection signal="focus_exited" from="." to="." method="_on_FocusExited"]
+[connection signal="mouse_entered" from="." to="." method="_on_Focused_or_Hovered"]
+[connection signal="mouse_exited" from="." to="." method="_on_MouseExited"]

@@ -1,0 +1,140 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci8435vphebsq"]
+
+[ext_resource type="Theme" uid="uid://m3tj8dkv47h2" path="res://Assets/Themes/Text/MenuLabel.tres" id="1_0k2fw"]
+[ext_resource type="Script" path="res://Scenes/Menus/HowToPlay/MauMau/menu_how_to_play_mau_mau.gd" id="1_jngby"]
+[ext_resource type="Theme" uid="uid://dyvwn86aqeleu" path="res://Assets/Themes/Text/MenuButton.tres" id="2_hl6bj"]
+
+[node name="MenuHowToPlayMauMau" type="CanvasLayer"]
+script = ExtResource("1_jngby")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.109804, 0.2, 0.0862745, 1)
+metadata/_edit_lock_ = true
+
+[node name="ControlschemeControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 160.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="ControlschemeControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.0
+offset_right = 164.0
+offset_bottom = 63.0
+grow_horizontal = 2
+theme = ExtResource("1_0k2fw")
+text = "Controls:"
+
+[node name="Label" type="Label" parent="ControlschemeControl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -609.0
+offset_top = -80.0
+offset_right = 609.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_0k2fw")
+theme_override_font_sizes/font_size = 26
+text = "you can Control menus with the mouse, arrowkeys or WASD
+during a game you can open the pause menu with \"ESC\" or \"Backspace\""
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="RulesetControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 200.0
+offset_right = 1920.0
+offset_bottom = 939.0
+
+[node name="Title" type="Label" parent="RulesetControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("1_0k2fw")
+text = "Ruleset (Schwimmen, 31):"
+
+[node name="Label" type="Label" parent="RulesetControl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -850.0
+offset_top = -665.0
+offset_right = 851.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_0k2fw")
+theme_override_font_sizes/font_size = 26
+text = "The first Player with no handcards left wins the game.
+
+Players can only Play cards of the same Value (e.g. \"7\") or the same type (e.g. \"cross\") as the topcard of the pile.
+
+Some cards have special interactions:
+
+7: the next player draws two cards or continues the chain with another 7
+The next player after would have to draw two cards for every 7 in the chain
+
+8: Skip the next players turn
+
+B: Can be played ignoring the topcard of the pile and you can choose a cardtype that has to be played next"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="MenuControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="ButtonBox" type="Control" parent="MenuControl"]
+anchors_preset = 0
+offset_top = 960.0
+offset_right = 1920.0
+offset_bottom = 1014.0
+
+[node name="ButtonBack" type="Button" parent="MenuControl/ButtonBox"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -60.0
+offset_right = 82.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_hl6bj")
+text = "Back"
+
+[node name="TextAnimationClock" type="Timer" parent="."]
+
+[connection signal="focus_entered" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_focus_entered"]
+[connection signal="focus_exited" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_focus_exited"]
+[connection signal="mouse_entered" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_mouse_entered"]
+[connection signal="mouse_exited" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_mouse_exited"]
+[connection signal="pressed" from="MenuControl/ButtonBox/ButtonBack" to="." method="_on_ButtonBack_pressed"]
+[connection signal="timeout" from="TextAnimationClock" to="." method="_on_TextAnimationClock_timeout" flags=18]
